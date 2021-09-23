@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity(), MovieListContract.View {
 
     override fun onRespnseFailure(throwable: Throwable) {
         Log.d("TEST", "onResponseFail ${throwable.toString()}")
+        Log.d("TEST", "onResponseFail ...........")
         Toast.makeText(this, "Error in getting data", Toast.LENGTH_SHORT).show()
     }
 }
