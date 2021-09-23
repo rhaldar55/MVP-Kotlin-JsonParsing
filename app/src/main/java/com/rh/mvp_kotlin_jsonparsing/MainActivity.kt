@@ -22,14 +22,14 @@ class MainActivity : AppCompatActivity(), MovieListContract.View {
     private lateinit var movieList: List<Movie>
     private lateinit var movieListAdapter: MovieListAdapter
     private lateinit var progressBar: ProgressBar
-    private  var pageNumber = 1
+    private var pageNumber = 1
     private lateinit var linearLayoutManager: LinearLayoutManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        recyclerView  =  findViewById(R.id.rvMovieList)
+        recyclerView = findViewById(R.id.rvMovieList)
         progressBar = findViewById(R.id.pbLoading)
         movieList = ArrayList<Movie>()
         linearLayoutManager = LinearLayoutManager(this)
@@ -42,20 +42,21 @@ class MainActivity : AppCompatActivity(), MovieListContract.View {
     }
 
     override fun showProgress() {
-        progressBar.visibility=View.VISIBLE
+        progressBar.visibility = View.VISIBLE
     }
 
     override fun hideProgress() {
-        progressBar.visibility=View.GONE
+        progressBar.visibility = View.GONE
     }
 
     override fun setDateRecyclerView(movieList: List<Movie>) {
         this.movieList = movieList
         movieListAdapter = MovieListAdapter(this.movieList, this)
-        recyclerView.adapter= movieListAdapter
+        recyclerView.adapter = movieListAdapter
     }
 
     override fun onRespnseFailure(throwable: Throwable) {
-       Toast.makeText(this, "Error in getting data", Toast.LENGTH_SHORT).show()
+        Log.d("TEST", "onResponseFail ${throwable.toString()}")
+        Toast.makeText(this, "Error in getting data", Toast.LENGTH_SHORT).show()
     }
 }
